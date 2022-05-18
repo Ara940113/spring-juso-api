@@ -1,20 +1,40 @@
 {{>/header}}
 
-<form action="/action_page.php">
+<form action="/join" method="post">
     <div>
         <h3>회원가입</h3>
     </div>
     <div class="form-group">
         <label for="email">username:</label>
-        <input type="email" class="form-control" placeholder="username" id="username">
+        <input type="text" class="form-control" placeholder="username" id="username" maxlength="20" required />
     </div>
     <div class="form-group">
         <label for="pwd">Password:</label>
-        <input type="password" class="form-control" placeholder="Password" id="pwd">
+        <input type="password" class="form-control" placeholder="Password" id="pwd" maxlength="100" required />
     </div>
     <div class="form-group">
         <label for="add">Address:</label>
-        <input type="password" class="form-control" placeholder="Address" id="Address">
+        <button type="button" onclick="goPopup()">주소검색</button>
+        <input type="text" class="form-control" placeholder="Address" id="address" readonly />
     </div>
     <button type="submit" class="btn btn-primary">회원가입</button>
 </form>
+
+<script>
+
+
+    function goPopup() {
+        let pop = window.open("/springjusoapi/jusoPopup.jsp", "pop",
+            "width=570,height=420, scrollbars=yes, resizable=yes");
+    }
+
+
+    function jusoCallBack(roadFullAddr) {
+        let addressEl = document.querySelector("#address")
+        addressEl.value = roadFullAddr;
+    }
+</script>
+
+</body>
+
+</html>
