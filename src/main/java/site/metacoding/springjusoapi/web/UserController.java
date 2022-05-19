@@ -37,13 +37,19 @@ public class UserController {
 
     // 회원가입 페이지
     @GetMapping("/joinForm")
-    public String join() {
+    public String joinForm() {
         return "joinForm";
     }
 
+    // // 주소창 팝업
+    // @GetMapping("/jusoPopup")
+    // public String juso() {
+
+    // }
+
     // 회원가입
-    @PostMapping("join")
-    public String joinForm(@Valid JoinDto joinDto, BindingResult bindingResult) {
+    @PostMapping("/join")
+    public String join(@Valid JoinDto joinDto, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             Map<String, String> errorMap = new HashMap<>();
