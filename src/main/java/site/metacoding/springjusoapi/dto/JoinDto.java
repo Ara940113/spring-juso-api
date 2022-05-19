@@ -1,5 +1,6 @@
 package site.metacoding.springjusoapi.dto;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -23,6 +24,11 @@ public class JoinDto {
     @NotBlank
     private String password;
 
+    @Size(min = 4, max = 100)
+    @NotBlank
+    @Email
+    private String email;
+
     @Size(min = 4, max = 300)
     @NotBlank
     private String address;
@@ -31,6 +37,7 @@ public class JoinDto {
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
+        user.setEmail(email);
         user.setAddress(address);
         return user;
     }

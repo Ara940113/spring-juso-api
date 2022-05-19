@@ -3,15 +3,20 @@ package site.metacoding.springjusoapi.web;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import lombok.RequiredArgsConstructor;
+import site.metacoding.springjusoapi.config.auth.LoginUser;
 import site.metacoding.springjusoapi.dto.JoinDto;
 import site.metacoding.springjusoapi.handler.ex.CustomException;
 import site.metacoding.springjusoapi.service.UserService;
@@ -41,12 +46,6 @@ public class UserController {
         return "joinForm";
     }
 
-    // // 주소창 팝업
-    // @GetMapping("/jusoPopup")
-    // public String juso() {
-
-    // }
-
     // 회원가입
     @PostMapping("/join")
     public String join(@Valid JoinDto joinDto, BindingResult bindingResult) {
@@ -63,6 +62,12 @@ public class UserController {
         // 핵심 로직
         userService.회원가입(joinDto.toEntity());
         return "redirect:/loginForm";
+    }
+
+    // 주소창 팝업
+    @GetMapping("/jusoPopup")
+    public String jusoPopup() {
+        return "jusoPopup";
     }
 
 }

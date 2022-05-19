@@ -16,10 +16,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    // 인증 설정하는 메서드
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // super.configure(http);
         http.csrf().disable();
         http.authorizeRequests()
                 .antMatchers("/s/**").authenticated()
@@ -27,6 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/loginForm")
+                .loginProcessingUrl("/login") // login 프로세스를 탄다.
                 .defaultSuccessUrl("/");
     }
 }
