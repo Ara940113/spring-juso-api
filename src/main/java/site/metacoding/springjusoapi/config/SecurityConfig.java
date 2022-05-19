@@ -7,6 +7,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import site.metacoding.springjusoapi.handler.LoginSuccessHandler;
+
 @EnableWebSecurity // 해당 파일로 시큐리티가 활성화
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -26,6 +28,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/loginForm")
                 .loginProcessingUrl("/login") // login 프로세스를 탄다.
-                .defaultSuccessUrl("/");
+                .successHandler(new LoginSuccessHandler());
     }
 }
