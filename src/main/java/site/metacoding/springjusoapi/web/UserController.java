@@ -27,6 +27,7 @@ public class UserController {
 
     // DI
     private final UserService userService;
+    private final HttpSession session;
 
     // 메인페이지
     @GetMapping("/")
@@ -38,6 +39,13 @@ public class UserController {
     @GetMapping("/loginForm")
     public String loginForm() {
         return "loginForm";
+    }
+
+    // 로그아웃 페이지
+    @GetMapping("/logout")
+    public String logout() {
+        session.invalidate();
+        return "redirect:/loginForm";
     }
 
     // 회원가입 페이지
