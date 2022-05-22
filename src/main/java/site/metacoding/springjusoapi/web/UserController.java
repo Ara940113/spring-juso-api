@@ -6,17 +6,14 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import lombok.RequiredArgsConstructor;
-import site.metacoding.springjusoapi.config.auth.LoginUser;
 import site.metacoding.springjusoapi.dto.JoinDto;
 import site.metacoding.springjusoapi.handler.ex.CustomException;
 import site.metacoding.springjusoapi.service.UserService;
@@ -78,4 +75,11 @@ public class UserController {
         return "jusoPopup";
     }
 
+    // 리턴값 반환
+    @PostMapping("/jusoPopup")
+    public String returnJuso(Model model, String inputYn, String roadFullAddr) {
+        model.addAttribute("inputYn", inputYn);
+        model.addAttribute("roadFullAddr", roadFullAddr);
+        return "jusoPopup";
+    }
 }

@@ -33,4 +33,25 @@ https://www.juso.go.kr/addrlink/devAddrLinkRequestWrite.do?returnFn=write&cntcMe
 <!-- 섬머노트 추가 -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+<!--마리아yml -->
+spring:
+  security:
+    user:
+      name: test
+      password: 1234
+  mustache:
+    expose-session-attributes: true
+  datasource:
+      url: jdbc:mariadb://localhost:3306/test 
+      driver-class-name: org.mariadb.jdbc.Driver
+      username: green
+      password: green1234
+
+<!--mysql yml-->
+  datasource:
+      url: jdbc:mysql://localhost:3306/test
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: green
+      password: green1234
 ```
